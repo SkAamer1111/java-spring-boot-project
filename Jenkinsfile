@@ -10,12 +10,12 @@ pipeline{
         maven 'maven3'
         jdk 'jdk17'
     }
-    environment{
-        POJECT_NAME : 'java-app'
-        PROJECT_KEY : 'java-app'
-        ORGANIZATION_KEY : 'gameoflife-project'
-        HOST_URL : 'https://sonarcloud.io'
-        IMAGE_NAME : 'shaikhaamer/spring-boot'
+    environment {
+        PROJECT_NAME = 'java-app'
+        PROJECT_KEY = 'java-app'
+        ORGANIZATION_KEY = 'gameoflife-project'
+        HOST_URL = 'https://sonarcloud.io'
+        IMAGE_NAME = 'shaikhaamer/spring-boot'
     }
 
     stages{
@@ -33,7 +33,7 @@ pipeline{
         stage ('CODE QUALITY'){
             steps{
                 withSonarQubeEnv ('sonar-server'){
-                    sh 'mvn sonar:sonar -Dsonar.projectKey:$PROJECT_KEY -Dsonar.projectName:$POJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY -Dsonar.host.url=$HOST_URL'
+                    sh 'mvn sonar:sonar -Dsonar.projectKey:$PROJECT_KEY -Dsonar.projectName:$PROJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY -Dsonar.host.url=$HOST_URL'
                 }
             }
         }
