@@ -11,11 +11,11 @@ pipeline{
         jdk 'jdk17'
     }
     environment{
-        POJECT_NAME: 'java-app'
-        PROJECT_KEY: 'java-app'
-        ORGANIZATION_KEY: 'gameoflife-project'
-        HOST_URL: 'https://sonarcloud.io'
-        IMAGE_NAME: 'shaikhaamer/spring-boot'
+        POJECT_NAME : 'java-app'
+        PROJECT_KEY : 'java-app'
+        ORGANIZATION_KEY : 'gameoflife-project'
+        HOST_URL : 'https://sonarcloud.io'
+        IMAGE_NAME : 'shaikhaamer/spring-boot'
     }
 
     stages{
