@@ -1,6 +1,9 @@
 pipeline{
     
-    aagent any
+    agent any
+    triggers {
+        githubPush()
+    }
     stages{
         stage ("CODE") {
         steps{
