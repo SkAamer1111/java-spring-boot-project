@@ -1,0 +1,2 @@
+# java-spring-boot-project
+i have created one java project from "https://start.spring.io/" this website to test the complete workflow from jenkins like, building the code, pushing artifact to nexus repo, bilding docker image, pushing docker image to nexus repo, do code quality check using sonar qube, and deploy onto server using docker. 
