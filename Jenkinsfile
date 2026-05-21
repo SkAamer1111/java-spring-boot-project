@@ -33,7 +33,7 @@ pipeline{
         stage ('CODE QUALITY'){
             steps{
                 withSonarQubeEnv ('sonar-server'){
-                    sh mvn sonar:sonar -Dsonar.projectKey:$PROJECT_KEY -Dsonar.projectName:$POJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY -Dsonar.host.url=$HOST_URL
+                    sh 'mvn sonar:sonar -Dsonar.projectKey:$PROJECT_KEY -Dsonar.projectName:$POJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY -Dsonar.host.url=$HOST_URL'
                 }
             }
         }
