@@ -36,7 +36,7 @@ pipeline{
         stage ('CODE QUALITY'){
             steps{
                 withSonarQubeEnv ('sonar-server'){
-                    sh "mvn sonar:sonar -Dsonar.projectKey:$PROJECT_KEY -Dsonar.projectName:$PROJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY "
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=$PROJECT_KEY -Dsonar.projectName=$PROJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY "
                 }
             }
         }
