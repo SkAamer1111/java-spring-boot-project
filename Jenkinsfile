@@ -45,6 +45,25 @@ pipeline{
                 archiveArtifacts artifacts: 'target/*.jar' 
             }
         }
+        stage ('PUSH ARTIFACT TO NEXUS'){
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'nexus-creds',
+                        usernameVariable: 'USERNAME',
+                        passwordVariable: 'PASSWORD' 
+                    )
+                ]) {
+                    sh """mvn deploy:deploy-file \
+                        -Dfile=target/demo-0.0.1-SNAPSHOT.jar  \
+                        -Durl=http://172.18.206.161:8081/repository/maven-releases-new/ \
+                        -DgroupId=java-app \
+                        -Dversion=1.0 \
+                        -Dpackaging=jar \
+                        -Dusername=$USERNAME \
+                        -Dpassword=$PASSWORD"""
+                        
+                }
+        }
         stage ('TEST_CODE'){
             steps{
                 sh 'mvn test'
@@ -54,6 +73,20 @@ pipeline{
             steps{
                 sh 'docker image build -t $IMAGE_NAME:1.0 .'
             }
+        }
+        stage ('PUSH IMAGE TO NEXUS'){
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'nexus-creds',
+                        usernameVariable: 'USERNAME',
+                        passwordVariable: 'PASSWORD' 
+                    )
+                ]) {
+                    sh """echo $PASSWORD | docker login 172.18.206.161:8083 -u $USERNAME --pasword-stdin \
+                          docker tag $IMAGE_NAME:1.0 172.18.206.161:8083/$IMAGE_NAME:1.0 \
+                          docker push 172.18.206.161:8083/$IMAGE_NAME:1.0"""
+                        
+                }
         }
         stage ('DEPLOY-APP'){
             steps {
