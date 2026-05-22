@@ -1,5 +1,6 @@
-// sonar sccanner is failing i need to see why, i think i used skaamer1111 organization
-// but projectKey should be in the same organization, 
+// as this pipeline suessfullu execcted and chek , execpt pushing docker image and artifact.
+// because nexus server is running on my local pc so it will not accessile to internet
+// hence pipeline is not checked, is it working or not !!!!!! 
 
 pipeline{
     
@@ -56,7 +57,7 @@ pipeline{
                 ]) {
                     sh """mvn deploy:deploy-file \
                         -Dfile=target/demo-0.0.1-SNAPSHOT.jar  \
-                        -Durl=http://172.18.206.161:8081/repository/maven-releases-new/ \
+                        -Durl=https://463827724f12-10-244-3-48-8081.papa.r.killercoda.com/repository/maven-releases-new/ \
                         -DgroupId=java-app \
                         -Dversion=1.0 \
                         -Dpackaging=jar \
@@ -85,9 +86,9 @@ pipeline{
                         passwordVariable: 'PASSWORD' 
                     )
                 ]) {
-                    sh """echo $PASSWORD | docker login 172.18.206.161:8083 -u $USERNAME --pasword-stdin \
-                          docker tag $IMAGE_NAME:1.0 172.18.206.161:8083/$IMAGE_NAME:1.0 \
-                          docker push 172.18.206.161:8083/$IMAGE_NAME:1.0"""
+                    sh """echo $PASSWORD | docker login 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083 -u $USERNAME --pasword-stdin \
+                          docker tag $IMAGE_NAME:1.0 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0 \
+                          docker push $IMAGE_NAME:1.0 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0"""
                         
                 }
             }

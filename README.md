@@ -5,3 +5,19 @@ i have created one java project from "https://start.spring.io/" this website to 
 ### 100% working #####
 
 code is working 100 % working correctly at this comit 
+
+
+### pre-requisets
+1. java 17 (add path "/usr/lib/jvm/java-17-openjdk-amd64") --> store in tools in jenkins
+
+2. maven 3 (auto install in jenkins with name "maven3" because same name pipline )
+
+
+### In jenkins
+pluugins to install
+1. sonar qube scanner
+2. docker pipeline (not neessary)
+
+store token and credential to jenkins
+
+1. Nexus username and password
