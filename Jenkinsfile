@@ -1,3 +1,6 @@
+// sonar sccanner is failing i need to see why, i think i used skaamer1111 organization
+// but projectKey should be in the same organization, 
+
 pipeline{
     
     agent any
@@ -13,7 +16,7 @@ pipeline{
     environment {
         PROJECT_NAME = 'java-app'
         PROJECT_KEY = 'java-app'
-        ORGANIZATION_KEY = 'gameoflife-project'
+        ORGANIZATION_KEY = 'skaamer1111'
         HOST_URL = 'https://sonarcloud.io'
         IMAGE_NAME = 'shaikhaamer/spring-boot'
     }
@@ -33,7 +36,7 @@ pipeline{
         stage ('CODE QUALITY'){
             steps{
                 withSonarQubeEnv ('sonar-server'){
-                    sh 'mvn sonar:sonar -Dsonar.projectKey:$PROJECT_KEY -Dsonar.projectName:$PROJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY -Dsonar.host.url=$HOST_URL'
+                    sh "mvn sonar:sonar -Dsonar.projectKey:$PROJECT_KEY -Dsonar.projectName:$PROJECT_NAME -Dsonar.organization=$ORGANIZATION_KEY "
                 }
             }
         }
