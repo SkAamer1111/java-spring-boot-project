@@ -46,7 +46,8 @@ pipeline{
             }
         }
         stage ('PUSH ARTIFACT TO NEXUS'){
-                withCredentials([
+            steps{
+                                withCredentials([
                     usernamePassword(
                         credentialsId: 'nexus-creds',
                         usernameVariable: 'USERNAME',
@@ -63,6 +64,7 @@ pipeline{
                         -Dpassword=$PASSWORD"""
                         
                 }
+            }
         }
         stage ('TEST_CODE'){
             steps{
@@ -75,6 +77,7 @@ pipeline{
             }
         }
         stage ('PUSH IMAGE TO NEXUS'){
+            steps{
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'nexus-creds',
@@ -87,6 +90,7 @@ pipeline{
                           docker push 172.18.206.161:8083/$IMAGE_NAME:1.0"""
                         
                 }
+            }
         }
         stage ('DEPLOY-APP'){
             steps {
