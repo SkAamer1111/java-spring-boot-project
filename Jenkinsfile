@@ -48,7 +48,7 @@ pipeline{
         }
         stage ('PUSH ARTIFACT TO NEXUS'){
             steps{
-                                withCredentials([
+                withCredentials([
                     usernamePassword(
                         credentialsId: 'nexus-creds',
                         usernameVariable: 'USERNAME',
