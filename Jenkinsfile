@@ -47,8 +47,7 @@ pipeline{
         }
         stage('PUSH ARTIFACT TO NEXUS') {
             steps {
-                    nexusArtifactUploader artifacts: [[artifactId: 'java-app', classifier: '', file: 'target/demo-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus-pass', groupId: 'java-app', nexusUrl: 'e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com/', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-new', version: '1.0'
-                }
+                nexusArtifactUploader artifacts: [[artifactId: 'java-app', classifier: '', file: 'target/demo-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus-pass', groupId: 'java-app', nexusUrl: 'e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-new', version: '1.0'
             }
         }
         stage ('TEST_CODE'){
@@ -83,4 +82,4 @@ pipeline{
             }
         }
     }
-
+}
