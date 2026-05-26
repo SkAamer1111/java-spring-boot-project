@@ -57,7 +57,7 @@ pipeline{
                     sh """
                     mvn deploy:deploy-file \
                         -Dfile=target/demo-0.0.1-SNAPSHOT.jar  \
-                        -Durl=https://463827724f12-10-244-3-48-8081.papa.r.killercoda.com/repository/maven-releases-new/ \
+                        -Durl=https://d4ca1922d634-10-244-6-175-8081.spca.r.killercoda.com/repository/maven-releases-new/ \
                         -DgroupId=java-app \
                         -Dversion=1.0 \
                         -DartifactId=java-app \
@@ -88,9 +88,9 @@ pipeline{
                         passwordVariable: 'PASSWORD' 
                     )
                 ]) {
-                    sh """echo $PASSWORD | docker login 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083 -u $USERNAME --pasword-stdin \
-                          docker tag $IMAGE_NAME:1.0 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0 \
-                          docker push $IMAGE_NAME:1.0 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0"""
+                    sh """echo $PASSWORD | docker login da54b478c7fb-10-244-6-161-8080.papa.r.killercoda.com:8083 -u $USERNAME --pasword-stdin \
+                          docker tag $IMAGE_NAME:1.0 da54b478c7fb-10-244-6-161-8080.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0 \
+                          docker push 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0"""
                         
                 }
             }
