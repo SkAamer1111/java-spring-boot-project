@@ -1,6 +1,5 @@
-// as this pipeline suessfullu execcted and chek , execpt pushing docker image and artifact.
-// because nexus server is running on my local pc so it will not accessile to internet
-// hence pipeline is not checked, is it working or not !!!!!! 
+// showing error UNAUTHORISED ERROR while pushing artifat to repository"
+// i have did some changes , need to check, i missed 
 
 pipeline{
     
@@ -50,19 +49,22 @@ pipeline{
             steps{
                 withCredentials([
                     usernamePassword(
-                        credentialsId: 'nexus-creds',
+                        credentialsId: 'nexus-pass',
                         usernameVariable: 'USERNAME',
                         passwordVariable: 'PASSWORD' 
                     )
                 ]) {
-                    sh """mvn deploy:deploy-file \
+                    sh """
+                    mvn deploy:deploy-file \
                         -Dfile=target/demo-0.0.1-SNAPSHOT.jar  \
                         -Durl=https://463827724f12-10-244-3-48-8081.papa.r.killercoda.com/repository/maven-releases-new/ \
                         -DgroupId=java-app \
                         -Dversion=1.0 \
+                        -DartifactId=java-app \
                         -Dpackaging=jar \
                         -Dusername=$USERNAME \
-                        -Dpassword=$PASSWORD"""
+                        -Dpassword=$PASSWORD
+                    """
                         
                 }
             }
@@ -81,7 +83,7 @@ pipeline{
             steps{
                 withCredentials([
                     usernamePassword(
-                        credentialsId: 'nexus-creds',
+                        credentialsId: 'nexus-pass',
                         usernameVariable: 'USERNAME',
                         passwordVariable: 'PASSWORD' 
                     )
