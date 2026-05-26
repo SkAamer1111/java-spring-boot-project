@@ -57,14 +57,14 @@ pipeline{
                     sh """
                     mvn deploy:deploy-file \
                         -Dfile=target/demo-0.0.1-SNAPSHOT.jar  \
-                        -Durl=https://d4ca1922d634-10-244-6-175-8081.spca.r.killercoda.com/repository/maven-releases-new/ \
+                        -Durl=https://e5c9077f5700-10-244-5-6-8081.spca.r.killercoda.com/repository/maven-releases/ \
                         -DgroupId=java-app \
                         -Dversion=1.0 \
                         -DrepositoryId=nexus \
                         -DartifactId=java-app \
                         -Dpackaging=jar \
-                        -Dusername=$USERNAME \
-                        -Dpassword=$PASSWORD
+                        -Dusername=""${USERNAME}"" \
+                        -Dpassword=""${PASSWORD}""
                     """
                         
                 }
