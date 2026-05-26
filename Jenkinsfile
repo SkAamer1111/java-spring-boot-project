@@ -45,7 +45,7 @@ pipeline{
                 archiveArtifacts artifacts: 'target/*.jar' 
             }
         }
-        stage{
+        stage('PUSH ARTIFCT'){
             steps{
                 nexusArtifactUploader artifacts: [[artifactId: 'java-app', classifier: '', file: 'target/demo-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus-pass', groupId: 'java-app', nexusUrl: 'e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-new', version: '1.0'
             }
