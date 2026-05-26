@@ -90,9 +90,9 @@ pipeline{
                         passwordVariable: 'PASSWORD' 
                     )
                 ]) {
-                    sh """echo $PASSWORD | docker login da54b478c7fb-10-244-6-161-8080.papa.r.killercoda.com:8083 -u $USERNAME --password-stdin \
-                          docker tag $IMAGE_NAME:1.0 da54b478c7fb-10-244-6-161-8080.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0 \
-                          docker push 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0"""
+                    sh """echo $PASSWORD | docker login e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com:8083 -u $USERNAME --password-stdin \
+                          docker tag $IMAGE_NAME:1.0 e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0 \
+                          docker push e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0"""
                         
                 }
             }
