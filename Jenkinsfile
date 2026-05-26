@@ -63,10 +63,10 @@ pipeline{
                     -Dversion=1.0 \
                     -Dpackaging=jar \
                     -DrepositoryId=nexus \
-                    -Durl=https://05d049e3e495-10-244-6-53-8081.papa.r.killercoda.com/repository/maven-repo-new/ \
+                    -Durl=https://e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com/repository/maven-new/ \
                     -DgeneratePom=true \
-                    -Dusername="${USERNAME}" \
-                    -Dpassword="${PASSWORD}"
+                    -Dauthentication.username=${USERNAME}="${USERNAME}" \
+                    -Dauthentication.password="${PASSWORD}"
                     """
                 }
             }
@@ -90,7 +90,7 @@ pipeline{
                         passwordVariable: 'PASSWORD' 
                     )
                 ]) {
-                    sh """echo $PASSWORD | docker login da54b478c7fb-10-244-6-161-8080.papa.r.killercoda.com:8083 -u $USERNAME --pasword-stdin \
+                    sh """echo $PASSWORD | docker login da54b478c7fb-10-244-6-161-8080.papa.r.killercoda.com:8083 -u $USERNAME --password-stdin \
                           docker tag $IMAGE_NAME:1.0 da54b478c7fb-10-244-6-161-8080.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0 \
                           docker push 463827724f12-10-244-3-48-8081.papa.r.killercoda.com:8083/$IMAGE_NAME:1.0"""
                         
