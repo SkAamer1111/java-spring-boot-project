@@ -60,6 +60,7 @@ pipeline{
                         -Durl=https://d4ca1922d634-10-244-6-175-8081.spca.r.killercoda.com/repository/maven-releases-new/ \
                         -DgroupId=java-app \
                         -Dversion=1.0 \
+                        -DrepositoryId=nexus \
                         -DartifactId=java-app \
                         -Dpackaging=jar \
                         -Dusername=$USERNAME \
