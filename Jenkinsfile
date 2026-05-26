@@ -63,7 +63,7 @@ pipeline{
                     -Dversion=1.0 \
                     -Dpackaging=jar \
                     -DrepositoryId=nexus \
-                    -Durl=https://05d049e3e495-10-244-6-53-8081.papa.r.killercoda.com/repository/maven-releases/ \
+                    -Durl=https://05d049e3e495-10-244-6-53-8081.papa.r.killercoda.com/repository/maven-repo-new/ \
                     -DgeneratePom=true \
                     -Dusername="${USERNAME}" \
                     -Dpassword="${PASSWORD}"
