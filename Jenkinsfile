@@ -45,28 +45,29 @@ pipeline{
                 archiveArtifacts artifacts: 'target/*.jar' 
             }
         }
-        stage ('PUSH ARTIFACT TO NEXUS'){
-            steps{
+        stage('PUSH ARTIFACT TO NEXUS') {
+            steps {
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'nexus-pass',
                         usernameVariable: 'USERNAME',
-                        passwordVariable: 'PASSWORD' 
+                        passwordVariable: 'PASSWORD'
                     )
                 ]) {
+
                     sh """
                     mvn deploy:deploy-file \
-                        -Dfile=target/demo-0.0.1-SNAPSHOT.jar  \
-                        -Durl=https://05d049e3e495-10-244-6-53-8081.papa.r.killercoda.com/repository/maven-releases/ \
-                        -DgroupId=java-app \
-                        -Dversion=1.0 \
-                        -DrepositoryId=nexus \
-                        -DartifactId=java-app \
-                        -Dpackaging=jar \
-                        -Dusername=""${USERNAME}"" \
-                        -Dpassword=""${PASSWORD}""
+                    -Dfile=target/demo-0.0.1-SNAPSHOT.jar \
+                    -DgroupId=java-app \
+                    -DartifactId=java-app \
+                    -Dversion=1.0 \
+                    -Dpackaging=jar \
+                    -DrepositoryId=nexus \
+                    -Durl=https://05d049e3e495-10-244-6-53-8081.papa.r.killercoda.com/repository/maven-releases/ \
+                    -DgeneratePom=true \
+                    -Dusername="${USERNAME}" \
+                    -Dpassword="${PASSWORD}"
                     """
-                        
                 }
             }
         }
