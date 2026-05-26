@@ -65,7 +65,7 @@ pipeline{
                     -DrepositoryId=nexus \
                     -Durl=https://e45794d1eedb-10-244-3-247-8081.papa.r.killercoda.com/repository/maven-new/ \
                     -DgeneratePom=true \
-                    -Dauthentication.username=${USERNAME}="${USERNAME}" \
+                    -Dauthentication.username="${USERNAME}" \
                     -Dauthentication.password="${PASSWORD}"
                     """
                 }
