@@ -57,7 +57,7 @@ pipeline{
                     sh """
                     mvn deploy:deploy-file \
                         -Dfile=target/demo-0.0.1-SNAPSHOT.jar  \
-                        -Durl=https://e5c9077f5700-10-244-5-6-8081.spca.r.killercoda.com/repository/maven-releases/ \
+                        -Durl=https://05d049e3e495-10-244-6-53-8081.papa.r.killercoda.com/repository/maven-releases/ \
                         -DgroupId=java-app \
                         -Dversion=1.0 \
                         -DrepositoryId=nexus \
